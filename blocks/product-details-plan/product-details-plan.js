@@ -189,7 +189,6 @@ export default async function decorate(block) {
           const modifiedImageFileName = imageFileName.replace(/_/g, '-');
 
           // Update the URL to the new format
-          //image.url = `/images/products/${modifiedImageFileName}`;
           image.url = `/images/products/${modifiedImageFileName}`;
         });
         return {
@@ -262,7 +261,7 @@ export default async function decorate(block) {
                     : blockConfig['add-to-cart-btn-text'] || placeholders.pdpProductAddtocart,
                   icon: 'Cart',
                   variant: 'primary',
-                  disabled: adding || !next.data.inStock,
+                  disabled: adding || !next.data.inStock || !next.valid,
                   onClick: async () => {
                     try {
                       // Plans flow

@@ -126,7 +126,7 @@ export default async function decorate(block) {
   let productSku;
   if (product) {
     // product available
-    productSku = getSkuFromUrl();
+    productSku = skuFromUrl; // getSkuFromUrl();
   } else {
     // no product found, no sku
     product = await getProduct(blockConfig['default-product']);
@@ -269,6 +269,7 @@ export default async function decorate(block) {
                         return;
                       }
                       const addToCartResponse = await addProductsToCart([{ ...next.values }]);
+                      // Todo: Need to check why errors is not in the response
 
                       // toast notification
                       if (next.valid && addToCartResponse) {
